@@ -5,7 +5,6 @@ module.exports = {
         
             res.render("index", { cubes })
         }catch(e) {
-            console.log(e.message);
             res.render("index", { err: e.message })
         }
     }
