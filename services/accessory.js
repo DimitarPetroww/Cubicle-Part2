@@ -10,7 +10,7 @@ async function getAll() {
     return Accessory.find({}).lean()
 }
 async function getOne(id) {
-    return Accessory.findById(id).populate("accessories")
+    return Accessory.findById(id)
 }
 async function attach(cubeID, accessoryID) {
     const accessory = await getOne(accessoryID)
