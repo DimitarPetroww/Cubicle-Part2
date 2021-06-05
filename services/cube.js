@@ -5,8 +5,8 @@ async function create(cube) {
 
     return existing.save()
 }
-async function getAll() {
-    return Cube.find({}).lean()
+async function getAll(options = {}) {
+    return Cube.find(options).lean()
 }
 async function getOne(id) {
     return Cube.findById(id).populate("accessories").lean()

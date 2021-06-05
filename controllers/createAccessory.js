@@ -8,7 +8,6 @@ module.exports = {
             description: req.body.description,
             imageURL: req.body.imageURL,
         }
-        console.log(accessory);
         try {
             await req.accessoryStorage.create(accessory)
 

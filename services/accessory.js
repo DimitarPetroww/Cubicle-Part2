@@ -7,7 +7,7 @@ async function create(accessory) {
     return existing.save()
 }
 async function getAll() {
-    return Accessory.find({}).lean()
+    return Accessory.find().lean()
 }
 async function getOne(id) {
     return Accessory.findById(id)
