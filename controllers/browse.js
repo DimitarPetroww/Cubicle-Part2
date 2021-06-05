@@ -11,7 +11,6 @@ module.exports = {
                 options.difficulty.$lte = Number(req.query.to)
             }
 
-            console.log(options);
             const cubes = await req.cubeStorage.getAll(options)
             res.render("index", { cubes })
         }catch(e) {
