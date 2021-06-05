@@ -16,5 +16,5 @@ async function getOne(id) {
 module.exports = {
     create,
     getAll,
-    getOne
+    getOne,
 }
