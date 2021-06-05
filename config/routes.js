@@ -1,3 +1,8 @@
+const baseRouter = require("../routers/index");
+const cubeRouter = require("../routers/cube")
+
 module.exports = (app) => {
-    // TODO...
+    app.use("/", baseRouter)
+    app.use("/cube", cubeRouter)
+
 };
