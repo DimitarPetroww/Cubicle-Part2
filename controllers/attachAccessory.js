@@ -5,7 +5,7 @@ module.exports = {
         const [cube, error1] = await promise(req.cubeStorage.getOne(req.params.id))
         const [accessories, error2] = await promise(req.accessoryStorage.getAll())
         if (error1 !== null || error2 !== null) {
-            return res.redirect("404")
+            return res.redirect("/404")
         }
         res.render("attachAccessory", { cube, accessories })
     },

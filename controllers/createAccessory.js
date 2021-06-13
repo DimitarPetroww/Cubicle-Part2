@@ -12,7 +12,7 @@ module.exports = {
         }
         const [_, error] = await promise(req.accessoryStorage.create(accessory))
         if(error !== null) {
-            res.render("createAccessory", {error: error.message})
+            return res.render("createAccessory", {error: error.message})
         }
         res.redirect("/")
     }
