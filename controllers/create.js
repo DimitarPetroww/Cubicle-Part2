@@ -1,3 +1,5 @@
+const promise = require("../util/promise")
+
 module.exports = {
     GET: (req, res) => {
         res.render("create")
@@ -9,12 +11,10 @@ module.exports = {
             imageURL: req.body.imageURL,
             difficulty: Number(req.body.difficulty)
         }
-        try {
-            await req.cubeStorage.create(cube)
-
-            res.redirect("/")
-        }catch(e) {
-            res.render("create", {error: e.message})
+        const [_, error] = await promise(req.cubeStorage.create(cube))
+        if(error !== null) {
+            return res.render("create", {error: error.message})
         }
+        res.redirect("/")
     }
 }

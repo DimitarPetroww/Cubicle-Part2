@@ -1,11 +1,12 @@
+const promise = require("../util/promise")
+
 module.exports = {
     GET: async (req, res) => {
-        try {
-            const cube = await req.cubeStorage.getOne(req.params.id)
-            res.render("details", { cube })
-        }catch(e) {
-            res.redirect("404")
+        const [cube , error] = await promise(req.cubeStorage.getOne(req.params.id))
+        if(error !== null) {
+            return res.redirect("404")
         }
+        res.render("details", { cube })
     },
 
 }

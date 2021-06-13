@@ -1,3 +1,5 @@
+const promise = require("../util/promise")
+
 module.exports = {
     GET: (req, res) => {
         res.render("createAccessory")
@@ -8,12 +10,10 @@ module.exports = {
             description: req.body.description,
             imageURL: req.body.imageURL,
         }
-        try {
-            await req.accessoryStorage.create(accessory)
-
-            res.redirect("/")
-        }catch(e) {
-            res.render("createAccessory", {error: e.message})
+        const [_, error] = await promise(req.accessoryStorage.create(accessory))
+        if(error !== null) {
+            res.render("createAccessory", {error: error.message})
         }
+        res.redirect("/")
     }
 }
